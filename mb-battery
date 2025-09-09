@@ -1,7 +1,7 @@
 #!/bin/sh
 
-[ ! $(ls /sys/class/power_supply/BAT* >/dev/null 2>&1 ) ] && \
-    printf "No battery found" && exit 0
+! ls /sys/class/power_supply/BAT* 2>&1 >/dev/null && \
+    exit 0
 
 for battery in /sys/class/power_supply/BAT?; do
         capacity=$(cat $battery/capacity)
